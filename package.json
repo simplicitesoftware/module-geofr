@@ -1,0 +1,10 @@
+{
+    "date": "Wed Sep 27 16:58:23 CEST 2017",
+    "name": "GeoFR",
+    "format": "xml",
+    "description": "France geographical business objects",
+    "files": ["GeoFR.xml"],
+    "repository": {},
+    "version": "0.1",
+    "dependencies": [{"Simplicite": "4.0"}]
+}
