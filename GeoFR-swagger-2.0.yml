@@ -4,37 +4,9 @@
 # |___/_|_|_|_| .__/_|_\__|_|\__\___|
 #             |_| Module: GeoFR 0.1
 paths:
-  /login:
+  /rest/GeofrDepartment:
     get:
-      summary: Login (obtain bearer token)
-      security:
-      - basicAuth: []
-      produces:
-      - text/plain
-      - application/json
-      operationId: login
-      responses:
-        '200':
-          description: Successful login
-        '401':
-          schema:
-            $ref: '#/definitions/Error401'
-          description: Unauthorized
-      parameters:
-      - in: query
-        name: _output
-        description: Optional output format
-        type: string
-        required: false
-        enum:
-        - json
-        - oauth2
-        - token
-      tags:
-      - session
-  /rest/GeoFRDepartment:
-    get:
-      summary: Search GeoFRDepartment business object records or get contextualized
+      summary: Search GeofrDepartment business object records or get contextualized
         metadata
       security:
       - bearerAuth: []
@@ -44,7 +16,7 @@ paths:
       responses:
         '200':
           schema:
-            $ref: '#/definitions/ArrayOfGeoFRDepartment'
+            $ref: '#/definitions/ArrayOfGeofrDepartment'
           description: Success in searching business object records (or in getting
             contextualized business object metadata, documentation, ...)
         '401':
@@ -81,23 +53,36 @@ paths:
         description: Search filter for Department name
         type: string
         required: false
-      - in: query
-        name: geofrDepRegId
-        description: Search filter for Region
-        type: string
-        required: false
-      - in: query
-        name: geofrDepRegId__geofrRegCode
-        description: Search filter for Region code
-        type: string
-        required: false
-      - in: query
-        name: geofrDepRegId__geofrRegNom
-        description: Search filter for Region name
-        type: string
-        required: false
       tags:
-      - GeoFRDepartment
+      - GeofrDepartment
+  /login:
+    get:
+      summary: Login (obtain bearer token)
+      security:
+      - basicAuth: []
+      produces:
+      - text/plain
+      - application/json
+      operationId: login
+      responses:
+        '200':
+          description: Successful login
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+      parameters:
+      - in: query
+        name: _output
+        description: Optional output format
+        type: string
+        required: false
+        enum:
+        - json
+        - oauth2
+        - token
+      tags:
+      - session
   /rest/GeofrRegion/{geofrRegCode}:
     post:
       summary: Create a new GeofrRegionbusiness object record
@@ -439,168 +424,6 @@ paths:
       - GeoFRCity
       consumes:
       - application/json
-  /rest/GeoFRDepartment/{row_id}:
-    post:
-      summary: Create a new GeoFRDepartmentbusiness object record
-      security:
-      - bearerAuth: []
-      produces:
-      - application/json
-      operationId: obj-geofrdepartment-create
-      responses:
-        '200':
-          schema:
-            $ref: '#/definitions/GeoFRDepartment'
-          description: Success in creating a new business object record
-        '400':
-          schema:
-            $ref: '#/definitions/Error400'
-          description: Bad request
-        '401':
-          schema:
-            $ref: '#/definitions/Error401'
-          description: Unauthorized
-        '500':
-          schema:
-            $ref: '#/definitions/Error500'
-          description: Internal server error
-      parameters:
-      - in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        type: string
-        required: true
-      - schema:
-          $ref: '#/definitions/GeoFRDepartment'
-        in: body
-        name: body
-      tags:
-      - GeoFRDepartment
-      consumes:
-      - application/json
-    get:
-      summary: Get a GeoFRDepartment business object record
-      security:
-      - bearerAuth: []
-      produces:
-      - application/json
-      operationId: obj-geofrdepartment-get
-      responses:
-        '200':
-          schema:
-            $ref: '#/definitions/GeoFRDepartment'
-          description: Success in getting a single business object record
-        '401':
-          schema:
-            $ref: '#/definitions/Error401'
-          description: Unauthorized
-        '500':
-          schema:
-            $ref: '#/definitions/Error500'
-          description: Internal server error
-        '404':
-          schema:
-            $ref: '#/definitions/Error404'
-          description: Not found
-      parameters:
-      - in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        type: string
-        required: true
-      - in: query
-        name: _inline_documents
-        description: Inline documents?
-        type: boolean
-        required: false
-      - in: query
-        name: _inline_thumbnails
-        description: Inline documents' thumbnails?
-        type: boolean
-        required: false
-      - in: query
-        name: _inline_objects
-        description: Inline objects?
-        type: boolean
-        required: false
-      tags:
-      - GeoFRDepartment
-    delete:
-      summary: Delete a GeoFRDepartment business object record
-      security:
-      - bearerAuth: []
-      produces:
-      - application/json
-      operationId: obj-geofrdepartment-delete
-      responses:
-        '200':
-          description: Success in deleting a business object record
-        '400':
-          schema:
-            $ref: '#/definitions/Error400'
-          description: Bad request
-        '401':
-          schema:
-            $ref: '#/definitions/Error401'
-          description: Unauthorized
-        '500':
-          schema:
-            $ref: '#/definitions/Error500'
-          description: Internal server error
-        '404':
-          schema:
-            $ref: '#/definitions/Error404'
-          description: Not found
-      parameters:
-      - in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        type: string
-        required: true
-      tags:
-      - GeoFRDepartment
-    put:
-      summary: Update a GeoFRDepartmentbusiness object record
-      security:
-      - bearerAuth: []
-      produces:
-      - application/json
-      operationId: obj-geofrdepartment-update
-      responses:
-        '200':
-          schema:
-            $ref: '#/definitions/GeoFRDepartment'
-          description: Success in updating a business object record
-        '400':
-          schema:
-            $ref: '#/definitions/Error400'
-          description: Bad request
-        '401':
-          schema:
-            $ref: '#/definitions/Error401'
-          description: Unauthorized
-        '500':
-          schema:
-            $ref: '#/definitions/Error500'
-          description: Internal server error
-        '404':
-          schema:
-            $ref: '#/definitions/Error404'
-          description: Not found
-      parameters:
-      - in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        type: string
-        required: true
-      - schema:
-          $ref: '#/definitions/GeoFRDepartment'
-        in: body
-        name: body
-      tags:
-      - GeoFRDepartment
-      consumes:
-      - application/json
   /rest/GeofrRegion:
     get:
       summary: Search GeofrRegion business object records or get contextualized metadata
@@ -645,12 +468,174 @@ paths:
         type: string
         required: false
       - in: query
-        name: geofrRegNom
+        name: geofrRegName
         description: Search filter for Region name
         type: string
         required: false
       tags:
       - GeofrRegion
+  /rest/GeofrDepartment/{geofrDepCode}:
+    post:
+      summary: Create a new GeofrDepartmentbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-geofrdepartment-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/GeofrDepartment'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: geofrDepCode
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/GeofrDepartment'
+        in: body
+        name: body
+      tags:
+      - GeofrDepartment
+      consumes:
+      - application/json
+    get:
+      summary: Get a GeofrDepartment business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-geofrdepartment-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/GeofrDepartment'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: geofrDepCode
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - GeofrDepartment
+    delete:
+      summary: Delete a GeofrDepartment business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-geofrdepartment-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: geofrDepCode
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - GeofrDepartment
+    put:
+      summary: Update a GeofrDepartmentbusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-geofrdepartment-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/GeofrDepartment'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: geofrDepCode
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/GeofrDepartment'
+        in: body
+        name: body
+      tags:
+      - GeofrDepartment
+      consumes:
+      - application/json
   /:
     get:
       summary: Get user session information
@@ -748,17 +733,12 @@ paths:
         type: string
         required: false
       - in: query
-        name: geofrCitDepId__geofrDepRegId
-        description: Search filter for Region
-        type: string
-        required: false
-      - in: query
-        name: geofrCitDepId__geofrDepRegId__geofrRegCode
+        name: geofrRegCode
         description: Search filter for Region code
         type: string
         required: false
       - in: query
-        name: geofrCitDepId__geofrDepRegId__geofrRegNom
+        name: geofrRegName
         description: Search filter for Region name
         type: string
         required: false
@@ -783,6 +763,19 @@ definitions:
         type: integer
         enum:
         - 404
+  GeofrDepartment:
+    type: object
+    properties:
+      geofrDepName:
+        description: Department name
+        type: string
+      geofrDepCode:
+        description: Department code
+        type: string
+  ArrayOfGeofrDepartment:
+    type: array
+    items:
+      $ref: '#/definitions/GeofrDepartment'
   ArrayOfGeoFRCity:
     type: array
     items:
@@ -799,37 +792,12 @@ definitions:
   GeofrRegion:
     type: object
     properties:
-      geofrRegNom:
+      geofrRegName:
         description: Region name
         type: string
       geofrRegCode:
         description: Region code
         type: string
-  GeoFRDepartment:
-    type: object
-    properties:
-      geofrDepRegId:
-        description: Region
-        type: string
-      geofrDepName:
-        description: Department name
-        type: string
-      row_id:
-        description: Unique technical row ID
-        type: string
-      geofrDepRegId__geofrRegCode:
-        description: Region code
-        type: string
-      geofrDepRegId__geofrRegNom:
-        description: Region name
-        type: string
-      geofrDepCode:
-        description: Department code
-        type: string
-  ArrayOfGeoFRDepartment:
-    type: array
-    items:
-      $ref: '#/definitions/GeoFRDepartment'
   ArrayOfGeofrRegion:
     type: array
     items:
@@ -847,14 +815,8 @@ definitions:
         description: Coordinates
         type: string
         example: latitude;longitude
-      geofrCitDepId__geofrDepRegId__geofrRegNom:
-        description: Region name
-        type: string
       geofrCitDepId:
         description: Department
-        type: string
-      geofrCitDepId__geofrDepRegId:
-        description: Region
         type: string
       geofrCitCodePostal:
         description: Code postal
@@ -865,7 +827,10 @@ definitions:
       row_id:
         description: Unique technical row ID
         type: string
-      geofrCitDepId__geofrDepRegId__geofrRegCode:
+      geofrRegName:
+        description: Region name
+        type: string
+      geofrRegCode:
         description: Region code
         type: string
       geofrCitCodeINSEE:
@@ -942,7 +907,7 @@ info:
 tags:
 - name: GeoFRCity
   description: City
-- name: GeoFRDepartment
+- name: GeofrDepartment
   description: Department
 - name: GeofrRegion
   description: Region
