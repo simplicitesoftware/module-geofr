@@ -4,6 +4,6 @@
     "description": "",
     "files": ["GeoFR.xml"],
     "repository": {},
-    "version": "0.1",
+    "version": "4.0",
     "dependencies": {"Simplicite": "5"}
 }
