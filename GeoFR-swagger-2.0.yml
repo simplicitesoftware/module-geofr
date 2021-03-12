@@ -262,168 +262,6 @@ paths:
           description: Unauthorized
       tags:
       - session
-  /rest/GeoFRCity/{row_id}:
-    post:
-      summary: Create a new GeoFRCitybusiness object record
-      security:
-      - bearerAuth: []
-      produces:
-      - application/json
-      operationId: obj-geofrcity-create
-      responses:
-        '200':
-          schema:
-            $ref: '#/definitions/GeoFRCity'
-          description: Success in creating a new business object record
-        '400':
-          schema:
-            $ref: '#/definitions/Error400'
-          description: Bad request
-        '401':
-          schema:
-            $ref: '#/definitions/Error401'
-          description: Unauthorized
-        '500':
-          schema:
-            $ref: '#/definitions/Error500'
-          description: Internal server error
-      parameters:
-      - in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        type: string
-        required: true
-      - schema:
-          $ref: '#/definitions/GeoFRCity'
-        in: body
-        name: body
-      tags:
-      - GeoFRCity
-      consumes:
-      - application/json
-    get:
-      summary: Get a GeoFRCity business object record
-      security:
-      - bearerAuth: []
-      produces:
-      - application/json
-      operationId: obj-geofrcity-get
-      responses:
-        '200':
-          schema:
-            $ref: '#/definitions/GeoFRCity'
-          description: Success in getting a single business object record
-        '401':
-          schema:
-            $ref: '#/definitions/Error401'
-          description: Unauthorized
-        '500':
-          schema:
-            $ref: '#/definitions/Error500'
-          description: Internal server error
-        '404':
-          schema:
-            $ref: '#/definitions/Error404'
-          description: Not found
-      parameters:
-      - in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        type: string
-        required: true
-      - in: query
-        name: _inline_documents
-        description: Inline documents?
-        type: boolean
-        required: false
-      - in: query
-        name: _inline_thumbnails
-        description: Inline documents' thumbnails?
-        type: boolean
-        required: false
-      - in: query
-        name: _inline_objects
-        description: Inline objects?
-        type: boolean
-        required: false
-      tags:
-      - GeoFRCity
-    delete:
-      summary: Delete a GeoFRCity business object record
-      security:
-      - bearerAuth: []
-      produces:
-      - application/json
-      operationId: obj-geofrcity-delete
-      responses:
-        '200':
-          description: Success in deleting a business object record
-        '400':
-          schema:
-            $ref: '#/definitions/Error400'
-          description: Bad request
-        '401':
-          schema:
-            $ref: '#/definitions/Error401'
-          description: Unauthorized
-        '500':
-          schema:
-            $ref: '#/definitions/Error500'
-          description: Internal server error
-        '404':
-          schema:
-            $ref: '#/definitions/Error404'
-          description: Not found
-      parameters:
-      - in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        type: string
-        required: true
-      tags:
-      - GeoFRCity
-    put:
-      summary: Update a GeoFRCitybusiness object record
-      security:
-      - bearerAuth: []
-      produces:
-      - application/json
-      operationId: obj-geofrcity-update
-      responses:
-        '200':
-          schema:
-            $ref: '#/definitions/GeoFRCity'
-          description: Success in updating a business object record
-        '400':
-          schema:
-            $ref: '#/definitions/Error400'
-          description: Bad request
-        '401':
-          schema:
-            $ref: '#/definitions/Error401'
-          description: Unauthorized
-        '500':
-          schema:
-            $ref: '#/definitions/Error500'
-          description: Internal server error
-        '404':
-          schema:
-            $ref: '#/definitions/Error404'
-          description: Not found
-      parameters:
-      - in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        type: string
-        required: true
-      - schema:
-          $ref: '#/definitions/GeoFRCity'
-        in: body
-        name: body
-      tags:
-      - GeoFRCity
-      consumes:
-      - application/json
   /rest/GeofrRegion:
     get:
       summary: Search GeofrRegion business object records or get contextualized metadata
@@ -474,6 +312,253 @@ paths:
         required: false
       tags:
       - GeofrRegion
+  /rest/GeofrCity/{row_id}:
+    post:
+      summary: Create a new GeofrCitybusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-geofrcity-create
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/GeofrCity'
+          description: Success in creating a new business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/GeofrCity'
+        in: body
+        name: body
+      tags:
+      - GeofrCity
+      consumes:
+      - application/json
+    get:
+      summary: Get a GeofrCity business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-geofrcity-get
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/GeofrCity'
+          description: Success in getting a single business object record
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - in: query
+        name: _inline_documents
+        description: Inline documents?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        type: boolean
+        required: false
+      - in: query
+        name: _inline_objects
+        description: Inline objects?
+        type: boolean
+        required: false
+      tags:
+      - GeofrCity
+    delete:
+      summary: Delete a GeofrCity business object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-geofrcity-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      tags:
+      - GeofrCity
+    put:
+      summary: Update a GeofrCitybusiness object record
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-geofrcity-update
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/GeofrCity'
+          description: Success in updating a business object record
+        '400':
+          schema:
+            $ref: '#/definitions/Error400'
+          description: Bad request
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+        '404':
+          schema:
+            $ref: '#/definitions/Error404'
+          description: Not found
+      parameters:
+      - in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        type: string
+        required: true
+      - schema:
+          $ref: '#/definitions/GeofrCity'
+        in: body
+        name: body
+      tags:
+      - GeofrCity
+      consumes:
+      - application/json
+  /rest/GeofrCity:
+    get:
+      summary: Search GeofrCity business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      produces:
+      - application/json
+      operationId: obj-geofrcity-search
+      responses:
+        '200':
+          schema:
+            $ref: '#/definitions/ArrayOfGeofrCity'
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+        '401':
+          schema:
+            $ref: '#/definitions/Error401'
+          description: Unauthorized
+        '500':
+          schema:
+            $ref: '#/definitions/Error500'
+          description: Internal server error
+      parameters:
+      - in: query
+        name: _metadata
+        description: Metadata?
+        type: boolean
+        required: false
+      - in: query
+        name: _count
+        description: Count?
+        type: boolean
+        required: false
+      - in: query
+        name: _doc
+        description: Documentation?
+        type: boolean
+        required: false
+      - in: query
+        name: geofrCitName
+        description: Search filter for Commune name
+        type: string
+        required: false
+      - in: query
+        name: geofrCitCodePostal
+        description: Search filter for Code postal
+        type: string
+        required: false
+      - in: query
+        name: geofrCitCodeINSEE
+        description: Search filter for Code INSEE
+        type: string
+        required: false
+      - in: query
+        name: geofrCitCoordinates
+        description: Search filter for Coordinates
+        type: string
+        required: false
+      - in: query
+        name: geofrCitDepId
+        description: Search filter for Department
+        type: string
+        required: false
+      - in: query
+        name: geofrCitDepId__geofrDepCode
+        description: Search filter for Department code
+        type: string
+        required: false
+      - in: query
+        name: geofrCitDepId__geofrDepName
+        description: Search filter for Department name
+        type: string
+        required: false
+      - in: query
+        name: geofrRegCode
+        description: Search filter for Region code
+        type: string
+        required: false
+      - in: query
+        name: geofrRegName
+        description: Search filter for Region name
+        type: string
+        required: false
+      tags:
+      - GeofrCity
   /rest/GeofrDepartment/{geofrDepCode}:
     post:
       summary: Create a new GeofrDepartmentbusiness object record
@@ -659,91 +744,6 @@ paths:
         required: false
       tags:
       - session
-  /rest/GeoFRCity:
-    get:
-      summary: Search GeoFRCity business object records or get contextualized metadata
-      security:
-      - bearerAuth: []
-      produces:
-      - application/json
-      operationId: obj-geofrcity-search
-      responses:
-        '200':
-          schema:
-            $ref: '#/definitions/ArrayOfGeoFRCity'
-          description: Success in searching business object records (or in getting
-            contextualized business object metadata, documentation, ...)
-        '401':
-          schema:
-            $ref: '#/definitions/Error401'
-          description: Unauthorized
-        '500':
-          schema:
-            $ref: '#/definitions/Error500'
-          description: Internal server error
-      parameters:
-      - in: query
-        name: _metadata
-        description: Metadata?
-        type: boolean
-        required: false
-      - in: query
-        name: _count
-        description: Count?
-        type: boolean
-        required: false
-      - in: query
-        name: _doc
-        description: Documentation?
-        type: boolean
-        required: false
-      - in: query
-        name: geofrCitName
-        description: Search filter for Commune name
-        type: string
-        required: false
-      - in: query
-        name: geofrCitCodePostal
-        description: Search filter for Code postal
-        type: string
-        required: false
-      - in: query
-        name: geofrCitCodeINSEE
-        description: Search filter for Code INSEE
-        type: string
-        required: false
-      - in: query
-        name: geofrCitCoordinates
-        description: Search filter for Coordinates
-        type: string
-        required: false
-      - in: query
-        name: geofrCitDepId
-        description: Search filter for Department
-        type: string
-        required: false
-      - in: query
-        name: geofrCitDepId__geofrDepCode
-        description: Search filter for Department code
-        type: string
-        required: false
-      - in: query
-        name: geofrCitDepId__geofrDepName
-        description: Search filter for Department name
-        type: string
-        required: false
-      - in: query
-        name: geofrRegCode
-        description: Search filter for Region code
-        type: string
-        required: false
-      - in: query
-        name: geofrRegName
-        description: Search filter for Region name
-        type: string
-        required: false
-      tags:
-      - GeoFRCity
 securityDefinitions:
   basicAuth:
     type: basic
@@ -776,10 +776,6 @@ definitions:
     type: array
     items:
       $ref: '#/definitions/GeofrDepartment'
-  ArrayOfGeoFRCity:
-    type: array
-    items:
-      $ref: '#/definitions/GeoFRCity'
   PublicationResult:
     type: object
     properties:
@@ -802,7 +798,7 @@ definitions:
     type: array
     items:
       $ref: '#/definitions/GeofrRegion'
-  GeoFRCity:
+  GeofrCity:
     type: object
     properties:
       geofrCitName:
@@ -848,6 +844,10 @@ definitions:
       item:
         description: Object item with lists of linked objects' items
         type: object
+  ArrayOfGeofrCity:
+    type: array
+    items:
+      $ref: '#/definitions/GeofrCity'
   Error400:
     type: object
     properties:
@@ -905,7 +905,7 @@ info:
   title: GeoFR
   version: '5'
 tags:
-- name: GeoFRCity
+- name: GeofrCity
   description: City
 - name: GeofrDepartment
   description: Department

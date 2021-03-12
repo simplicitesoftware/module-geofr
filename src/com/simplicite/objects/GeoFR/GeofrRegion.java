@@ -87,11 +87,8 @@ public class GeofrRegion extends ObjectService {
 		return true;
 	}
 
-
 	@Override
 	public String getUserKeyLabel(String[] row) {
-		return row != null
-			? row[getFieldIndex("geofrRegName")]
-			: getFieldValue("geofrRegName");
+		return getFieldValue("geofrRegName", row);
 	}
 }

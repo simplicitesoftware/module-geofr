@@ -29,10 +29,6 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/GeofrDepartment'
-    ArrayOfGeoFRCity:
-      type: array
-      items:
-        $ref: '#/components/schemas/GeoFRCity'
     PublicationResult:
       type: object
       properties:
@@ -55,7 +51,7 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/GeofrRegion'
-    GeoFRCity:
+    GeofrCity:
       type: object
       properties:
         geofrCitName:
@@ -101,6 +97,10 @@ components:
         item:
           description: Object item with lists of linked objects' items
           type: object
+    ArrayOfGeofrCity:
+      type: array
+      items:
+        $ref: '#/components/schemas/GeofrCity'
     Error400:
       type: object
       properties:
@@ -460,201 +460,6 @@ paths:
                 $ref: '#/components/schemas/Error401'
       tags:
       - session
-  /rest/GeoFRCity/{row_id}:
-    post:
-      summary: Create a new GeoFRCitybusiness object record
-      security:
-      - bearerAuth: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GeoFRCity'
-      operationId: obj-geofrcity-create
-      responses:
-        '200':
-          description: Success in creating a new business object record
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GeoFRCity'
-        '400':
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error400'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error500'
-      parameters:
-      - schema:
-          type: string
-        in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        required: true
-      tags:
-      - GeoFRCity
-    get:
-      summary: Get a GeoFRCity business object record
-      security:
-      - bearerAuth: []
-      operationId: obj-geofrcity-get
-      responses:
-        '200':
-          description: Success in getting a single business object record
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GeoFRCity'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error500'
-        '404':
-          description: Not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error404'
-      parameters:
-      - schema:
-          type: string
-        in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        required: true
-      - schema:
-          type: boolean
-        in: query
-        name: _inline_documents
-        description: Inline documents?
-        required: false
-      - schema:
-          type: boolean
-        in: query
-        name: _inline_thumbnails
-        description: Inline documents' thumbnails?
-        required: false
-      - schema:
-          type: boolean
-        in: query
-        name: _inline_objects
-        description: Inline objects?
-        required: false
-      tags:
-      - GeoFRCity
-    delete:
-      summary: Delete a GeoFRCity business object record
-      security:
-      - bearerAuth: []
-      operationId: obj-geofrcity-delete
-      responses:
-        '200':
-          description: Success in deleting a business object record
-          content:
-            application/json: {}
-        '400':
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error400'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error500'
-        '404':
-          description: Not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error404'
-      parameters:
-      - schema:
-          type: string
-        in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        required: true
-      tags:
-      - GeoFRCity
-    put:
-      summary: Update a GeoFRCitybusiness object record
-      security:
-      - bearerAuth: []
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GeoFRCity'
-      operationId: obj-geofrcity-update
-      responses:
-        '200':
-          description: Success in updating a business object record
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GeoFRCity'
-        '400':
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error400'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error500'
-        '404':
-          description: Not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error404'
-      parameters:
-      - schema:
-          type: string
-        in: path
-        name: row_id
-        description: Row ID (or empty or _ for all row IDs)
-        required: true
-      tags:
-      - GeoFRCity
   /rest/GeofrRegion:
     get:
       summary: Search GeofrRegion business object records or get contextualized metadata
@@ -714,6 +519,302 @@ paths:
         required: false
       tags:
       - GeofrRegion
+  /rest/GeofrCity/{row_id}:
+    post:
+      summary: Create a new GeofrCitybusiness object record
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeofrCity'
+      operationId: obj-geofrcity-create
+      responses:
+        '200':
+          description: Success in creating a new business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeofrCity'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - GeofrCity
+    get:
+      summary: Get a GeofrCity business object record
+      security:
+      - bearerAuth: []
+      operationId: obj-geofrcity-get
+      responses:
+        '200':
+          description: Success in getting a single business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeofrCity'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_documents
+        description: Inline documents?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_objects
+        description: Inline objects?
+        required: false
+      tags:
+      - GeofrCity
+    delete:
+      summary: Delete a GeofrCity business object record
+      security:
+      - bearerAuth: []
+      operationId: obj-geofrcity-delete
+      responses:
+        '200':
+          description: Success in deleting a business object record
+          content:
+            application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - GeofrCity
+    put:
+      summary: Update a GeofrCitybusiness object record
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeofrCity'
+      operationId: obj-geofrcity-update
+      responses:
+        '200':
+          description: Success in updating a business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeofrCity'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error404'
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: Row ID (or empty or _ for all row IDs)
+        required: true
+      tags:
+      - GeofrCity
+  /rest/GeofrCity:
+    get:
+      summary: Search GeofrCity business object records or get contextualized metadata
+      security:
+      - bearerAuth: []
+      operationId: obj-geofrcity-search
+      responses:
+        '200':
+          description: Success in searching business object records (or in getting
+            contextualized business object metadata, documentation, ...)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfGeofrCity'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error500'
+      parameters:
+      - schema:
+          type: boolean
+        in: query
+        name: _metadata
+        description: Metadata?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _count
+        description: Count?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _doc
+        description: Documentation?
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: geofrCitName
+        description: Search filter for Commune name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: geofrCitCodePostal
+        description: Search filter for Code postal
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: geofrCitCodeINSEE
+        description: Search filter for Code INSEE
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: geofrCitCoordinates
+        description: Search filter for Coordinates
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: geofrCitDepId
+        description: Search filter for Department
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: geofrCitDepId__geofrDepCode
+        description: Search filter for Department code
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: geofrCitDepId__geofrDepName
+        description: Search filter for Department name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: geofrRegCode
+        description: Search filter for Region code
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: geofrRegName
+        description: Search filter for Region name
+        required: false
+      tags:
+      - GeofrCity
   /rest/GeofrDepartment/{geofrDepCode}:
     post:
       summary: Create a new GeofrDepartmentbusiness object record
@@ -935,107 +1036,6 @@ paths:
         required: false
       tags:
       - session
-  /rest/GeoFRCity:
-    get:
-      summary: Search GeoFRCity business object records or get contextualized metadata
-      security:
-      - bearerAuth: []
-      operationId: obj-geofrcity-search
-      responses:
-        '200':
-          description: Success in searching business object records (or in getting
-            contextualized business object metadata, documentation, ...)
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ArrayOfGeoFRCity'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error401'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error500'
-      parameters:
-      - schema:
-          type: boolean
-        in: query
-        name: _metadata
-        description: Metadata?
-        required: false
-      - schema:
-          type: boolean
-        in: query
-        name: _count
-        description: Count?
-        required: false
-      - schema:
-          type: boolean
-        in: query
-        name: _doc
-        description: Documentation?
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: geofrCitName
-        description: Search filter for Commune name
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: geofrCitCodePostal
-        description: Search filter for Code postal
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: geofrCitCodeINSEE
-        description: Search filter for Code INSEE
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: geofrCitCoordinates
-        description: Search filter for Coordinates
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: geofrCitDepId
-        description: Search filter for Department
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: geofrCitDepId__geofrDepCode
-        description: Search filter for Department code
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: geofrCitDepId__geofrDepName
-        description: Search filter for Department name
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: geofrRegCode
-        description: Search filter for Region code
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: geofrRegName
-        description: Search filter for Region name
-        required: false
-      tags:
-      - GeoFRCity
 info:
   license:
     name: Simplicite license
@@ -1048,7 +1048,7 @@ info:
   title: GeoFR
   version: '5'
 tags:
-- name: GeoFRCity
+- name: GeofrCity
   description: City
 - name: GeofrDepartment
   description: Department
