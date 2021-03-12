@@ -14,7 +14,7 @@ ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <simplicite.url>https://dev40.dev.simplicite.io</simplicite.url>
-    <simplicite.version>5.2.0-alpha-SNAPSHOT</simplicite.version>
+    <simplicite.version>5.2-SNAPSHOT</simplicite.version>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <sonar.projectKey>simplicite-modules-GeoFR</sonar.projectKey>
@@ -35,6 +35,23 @@ ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
     <testResources>
       <testResource><directory>${project.basedir}/test/resources</directory></testResource>
     </testResources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.2.0</version>
+        <configuration>
+          <excludes>
+            <exclude>.gitkeep</exclude>
+            <exclude>Disposition/**</exclude>
+            <exclude>ObjectInternal/**</exclude>
+            <exclude>ObjectExternal/**</exclude>
+            <exclude>BPMProcess/**</exclude>
+            <exclude>BPMProcess/**</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
   <repositories>
     <repository>
@@ -58,6 +75,12 @@ ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
       <artifactId>simplicite-api</artifactId>
       <version>${simplicite.version}</version>
       <classifier>javadoc</classifier>
+    </dependency>
+    <dependency>
+      <groupId>com.simplicite</groupId>
+      <artifactId>simplicite-api</artifactId>
+      <version>${simplicite.version}</version>
+      <classifier>sources</classifier>
     </dependency>
   </dependencies>
 </project>

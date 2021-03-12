@@ -1,9 +1,9 @@
 {
+    "date": "2020-05-01 18:53:16",
     "name": "GeoFR",
     "format": "xml",
-    "description": "",
     "files": ["GeoFR.xml"],
     "repository": {},
     "version": "4.0",
-    "dependencies": {"Simplicite": "5"}
+    "platform": "5.2.0-alpha"
 }
