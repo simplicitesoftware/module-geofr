@@ -13,7 +13,7 @@
         "uri": "https://github.com/simplicitesoftware/module-geofr.git"
     }
 }]]></mdl_url>
-		<mdl_lastupd>2017-09-27 16:58:23</mdl_lastupd>
+		<mdl_type>C</mdl_type>
 		<mdl_comment><![CDATA[France geographical business objects]]></mdl_comment>
 	</data>
 </object>
@@ -69,7 +69,7 @@
 		<fld_more>0</fld_more>
 		<fld_listmore>0</fld_listmore>
 		<fld_listsum/>
-		<fld_tray/>
+		<fld_tray>0</fld_tray>
 		<fld_type>3</fld_type>
 		<fld_type_id.flt_code/>
 		<fld_list_id.lov_name/>
@@ -106,7 +106,7 @@
 		<fld_more>0</fld_more>
 		<fld_listmore>0</fld_listmore>
 		<fld_listsum/>
-		<fld_tray/>
+		<fld_tray>0</fld_tray>
 		<fld_type>15</fld_type>
 		<fld_type_id.flt_code>ALPHANUM</fld_type_id.flt_code>
 		<fld_list_id.lov_name/>
@@ -143,7 +143,7 @@
 		<fld_more>0</fld_more>
 		<fld_listmore>0</fld_listmore>
 		<fld_listsum/>
-		<fld_tray/>
+		<fld_tray>0</fld_tray>
 		<fld_type>25</fld_type>
 		<fld_type_id.flt_code/>
 		<fld_list_id.lov_name/>
@@ -180,7 +180,7 @@
 		<fld_more>0</fld_more>
 		<fld_listmore>0</fld_listmore>
 		<fld_listsum/>
-		<fld_tray/>
+		<fld_tray>0</fld_tray>
 		<fld_type>0</fld_type>
 		<fld_type_id.flt_code/>
 		<fld_list_id.lov_name/>
@@ -217,7 +217,7 @@
 		<fld_more>0</fld_more>
 		<fld_listmore>0</fld_listmore>
 		<fld_listsum/>
-		<fld_tray/>
+		<fld_tray>0</fld_tray>
 		<fld_type>3</fld_type>
 		<fld_type_id.flt_code/>
 		<fld_list_id.lov_name/>
@@ -254,7 +254,7 @@
 		<fld_more>0</fld_more>
 		<fld_listmore>0</fld_listmore>
 		<fld_listsum/>
-		<fld_tray/>
+		<fld_tray>0</fld_tray>
 		<fld_type>15</fld_type>
 		<fld_type_id.flt_code>ALPHANUM</fld_type_id.flt_code>
 		<fld_list_id.lov_name/>
@@ -291,7 +291,7 @@
 		<fld_more>0</fld_more>
 		<fld_listmore>0</fld_listmore>
 		<fld_listsum/>
-		<fld_tray/>
+		<fld_tray>0</fld_tray>
 		<fld_type>3</fld_type>
 		<fld_type_id.flt_code/>
 		<fld_list_id.lov_name/>
@@ -328,7 +328,7 @@
 		<fld_more>0</fld_more>
 		<fld_listmore>0</fld_listmore>
 		<fld_listsum/>
-		<fld_tray/>
+		<fld_tray>0</fld_tray>
 		<fld_type>15</fld_type>
 		<fld_type_id.flt_code>ALPHANUM</fld_type_id.flt_code>
 		<fld_list_id.lov_name/>
@@ -365,7 +365,7 @@
 		<fld_more>0</fld_more>
 		<fld_listmore>0</fld_listmore>
 		<fld_listsum/>
-		<fld_tray/>
+		<fld_tray>0</fld_tray>
 		<fld_type>3</fld_type>
 		<fld_type_id.flt_code/>
 		<fld_list_id.lov_name/>
@@ -411,6 +411,7 @@
 	<data>
 		<obo_name>GeofrCity</obo_name>
 		<obo_dbtable>geofr_city</obo_dbtable>
+		<obo_role>OBJ</obo_role>
 		<obo_class/>
 		<obo_script_id/>
 		<obo_usets>1</obo_usets>
@@ -471,10 +472,13 @@
 		<obo_search_ts/>
 		<obo_minrows/>
 		<obo_maxrows/>
+		<obo_sortable>1</obo_sortable>
+		<obo_list_areas>1</obo_list_areas>
 	</data>
 	<data>
 		<obo_name>GeofrDepartment</obo_name>
 		<obo_dbtable>service</obo_dbtable>
+		<obo_role>OBJ</obo_role>
 		<obo_class/>
 		<obo_script_id>src/com/simplicite/objects/GeoFR/GeofrDepartment.java</obo_script_id>
 		<obo_usets>1</obo_usets>
@@ -535,10 +539,13 @@
 		<obo_search_ts/>
 		<obo_minrows/>
 		<obo_maxrows/>
+		<obo_sortable>1</obo_sortable>
+		<obo_list_areas>1</obo_list_areas>
 	</data>
 	<data>
 		<obo_name>GeofrRegion</obo_name>
 		<obo_dbtable>service</obo_dbtable>
+		<obo_role>OBJ</obo_role>
 		<obo_class/>
 		<obo_script_id>src/com/simplicite/objects/GeoFR/GeofrRegion.java</obo_script_id>
 		<obo_usets>1</obo_usets>
@@ -562,7 +569,7 @@
 		<obo_updall>0</obo_updall>
 		<obo_delall>0</obo_delall>
 		<obo_listsearch>1</obo_listsearch>
-		<obo_list_edit/>
+		<obo_list_edit>N;L;E</obo_list_edit>
 		<obo_useform>1</obo_useform>
 		<obo_title/>
 		<obo_icon>france</obo_icon>
@@ -599,6 +606,8 @@
 		<obo_search_ts/>
 		<obo_minrows/>
 		<obo_maxrows/>
+		<obo_sortable>1</obo_sortable>
+		<obo_list_areas>1</obo_list_areas>
 	</data>
 </object>
 <object>
@@ -968,7 +977,7 @@
 		<obf_ref_export>1</obf_ref_export>
 		<obf_copy/>
 		<obf_associate/>
-		<obf_inline/>
+		<obf_inline>0</obf_inline>
 		<obf_rendering/>
 		<obf_treedepth/>
 		<obf_area_id.ofa_name/>
@@ -992,7 +1001,7 @@
 		<obf_ref_export>1</obf_ref_export>
 		<obf_copy/>
 		<obf_associate/>
-		<obf_inline/>
+		<obf_inline>0</obf_inline>
 		<obf_rendering/>
 		<obf_treedepth/>
 		<obf_area_id.ofa_name/>
@@ -1161,7 +1170,6 @@
 		<res_code>france</res_code>
 		<res_cached>0</res_cached>
 		<res_file/>
-		<res_file_compiled/>
 		<res_image>resources/Disposition/default/france.png</res_image>
 		<row_module_id.mdl_name>GeoFR</row_module_id.mdl_name>
 	</data>
